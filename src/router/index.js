@@ -1,35 +1,42 @@
 import { defineRouter } from '#q-app/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import {
+  createRouter,
+  createMemoryHistory,
+  createWebHistory,
+  createWebHashHistory,
+} from 'vue-router'
 import routes from './routes'
 
-/*AGREGADO*/ 
-import { register } from 'register-service-worker';
+/*AGREGADO*/
+import { register } from 'register-service-worker'
 
 if (process.env.PROD) {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
-      console.log('La app está siendo servida desde la caché por un service worker.');
+      console.log('La app está siendo servida desde la caché por un service worker.')
     },
     registered() {
-      console.log('Service worker ha sido registrado.');
+      console.log('Service worker ha sido registrado.')
     },
     cached() {
-      console.log('El contenido ha sido cacheado para uso offline.');
+      console.log('El contenido ha sido cacheado para uso offline.')
     },
     updatefound() {
-      console.log('Nuevo contenido está siendo descargado.');
+      console.log('Nuevo contenido está siendo descargado.')
     },
     updated() {
-      console.log('Nuevo contenido está disponible; por favor, recarga.');
+      console.log('Nuevo contenido está disponible; por favor, recarga.')
     },
     offline() {
-      console.log('No se encontró conexión a Internet. La app se está ejecutando en modo offline.');
+      console.log('No se encontró conexión a Internet. La app se está ejecutando en modo offline.')
     },
     error(error) {
-      console.error('Error durante el registro del service worker:', error);
+      console.error('Error durante el registro del service worker:', error)
     },
-  });
+  })
 }
+/********************************************************************/
+/********************************************************************/
 
 /*
  * If not building with SSR mode, you can
@@ -40,12 +47,12 @@ if (process.env.PROD) {
  * with the Router instance.
  */
 
-
-
 export default defineRouter(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+    : process.env.VUE_ROUTER_MODE === 'history'
+      ? createWebHistory
+      : createWebHashHistory
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -54,8 +61,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
-    history: createHistory(process.env.VUE_ROUTER_BASE)
-    
+    history: createHistory(process.env.VUE_ROUTER_BASE),
   })
 
   return Router
