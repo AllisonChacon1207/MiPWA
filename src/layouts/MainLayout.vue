@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lff">
     <q-header elevated class="bg-cyan-8">
       <q-toolbar>
-        <q-toolbar-title>Mi Proyecto</q-toolbar-title>
+        <q-toolbar-title>Registro Vehicular</q-toolbar-title>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <!--------------------------------------------------------------------------------->
         <!-- Botón de instalación -->
@@ -44,24 +44,20 @@
             <q-item-section avatar>
               <q-icon name="drafts" />
             </q-item-section>
-            <q-item-section> OTROS..... </q-item-section>
+            <q-item-section> MI API </q-item-section>
           </q-item> </q-list
         ><!------------------------------------------------------------------------------------------> </q-scroll-area
       ><!------------------------------------------------------------------------------------->
-      <!------------------------------------------------------------------------------------------------------------->
-      <q-img
-        class="absolute-top"
-        src="https://cdn.quasar.dev/img/material.png"
-        style="height: 150px"
-      >
+      <!-------------------COLOR DE FONDO----------------------------------------------------->
+      <div class="absolute-top" style="height: 150px; background-color: #0ab0b4">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            <img src="/src-pwa/carro.png" /><!--FOTO DE PERFIL-->
           </q-avatar>
-          <div class="text-weight-bold">USUARIO</div>
+          <div class="text-weight-bold">Allison Fabiola</div>
           <div>Registro Vehicular</div>
         </div>
-      </q-img>
+      </div>
     </q-drawer>
     <!------------------------------------------------------------------------------------------------------------->
     <q-page-container>

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "express": "^4.21.2",
     "html2canvas": "^1.4.1",
     "qrcode": "^1.5.4",
     "qrcode.vue": "^3.6.0",
@@ -47,5 +48,16 @@
     "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllisonChacon1207/MiPWA.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllisonChacon1207/MiPWA/issues"
+  },
+  "homepage": "https://github.com/AllisonChacon1207/MiPWA#readme"
 }
