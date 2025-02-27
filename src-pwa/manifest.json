@@ -1,4 +1,9 @@
 {
+  "name": "Registro Vehicular",
+  "short_name": "Vehicular",
+  "description": "Aplicación para el registro vehicular",
+  "start_url": "/",
+  "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#027be3",

@@ -46,10 +46,12 @@
             </q-item-section>
             <q-item-section> DATOS API </q-item-section>
           </q-item> </q-list
-        ><!------------------------------------------------------------------------------------------> </q-scroll-area
-      ><!------------------------------------------------------------------------------------->
+        ><!------------------------------------------------------------------------------------------>
+      </q-scroll-area>
+      <!------------------------------------------------------------------------------------->
       <!------------------------------------------------------------------------------------------------------------->
-      <q-img class="absolute-top" style="height: 150px; background-color: #09989c">
+      <q-img class="absolute-top" style="height: 150px; background-color: #09989c"
+        ><!----------COLOR DE LA PALETA DE PERFIL-------------->
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img src="/src-pwa/carro.png" />
