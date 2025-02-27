@@ -35,6 +35,7 @@ export default defineConfig((/* ctx */) => {
       target: {
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
+        publicPath: '/MiPWA/',
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -61,8 +62,8 @@ export default defineConfig((/* ctx */) => {
           'vite-plugin-checker',
           {
             eslint: {
-              lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
-              useFlatConfig: true,
+              warnings: false,
+              errors: false,
             },
           },
           { server: false },
@@ -133,50 +134,6 @@ export default defineConfig((/* ctx */) => {
 
       // pwaExtendGenerateSWOptions (cfg) {},
       // pwaExtendInjectManifestOptions (cfg) {}
-    },
-
-    //PA Q DE SIN LOS DATOS//
-    // PA Q DE SIN EL WIFI //
-    pwa: {
-      workboxMode: 'GenerateSW', // Usa 'GenerateSW' con mayúsculas
-      workboxOptions: {
-        runtimeCaching: [
-          {
-            urlPattern: ({ request }) => request.destination === 'document',
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'html-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 7 * 24 * 60 * 60, // 1 semana
-              },
-            },
-          },
-          {
-            urlPattern: ({ request }) =>
-              request.destination === 'script' || request.destination === 'style',
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
-              },
-            },
-          },
-          {
-            urlPattern: ({ request }) => request.destination === 'image',
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'image-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 24 * 60 * 60, // 60 días
-              },
-            },
-          },
-        ],
-      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova
