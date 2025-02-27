@@ -7,7 +7,7 @@ import {
 } from 'vue-router'
 import routes from './routes'
 
-/*AGREGADO*/
+/* AGREGADO: Registro del Service Worker utilizando la librería `register-service-worker` */
 import { register } from 'register-service-worker'
 
 if (process.env.PROD) {
@@ -35,88 +35,7 @@ if (process.env.PROD) {
     },
   })
 }
-/********************************************************************/
-// En tu archivo principal (por ejemplo, `main.js`)
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log('Service Worker registrado con éxito:', registration)
-      })
-      .catch((error) => {
-        console.log('Error al registrar el Service Worker:', error)
-      })
-  })
-}
-/********************************************************************/
-// service-worker.js
-const CACHE_NAME = 'vehicular-cache-v1'
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/src-pwa/carro.png',
-  // Agrega aquí otros archivos necesarios para tu app
-]
-
-// Instalación del Service Worker
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('Archivos cacheados')
-      return cache.addAll(urlsToCache)
-    }),
-  )
-})
-
-// Activación del Service Worker
-self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME]
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName)
-          }
-        }),
-      )
-    }),
-  )
-})
-
-// Fetch: Manejar las solicitudes de red
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // Si hay una respuesta en caché, la devuelve
-      if (cachedResponse) {
-        return cachedResponse
-      }
-
-      // Si no está en caché, hace la solicitud de red
-      return fetch(event.request)
-    }),
-  )
-})
-
-/********************************************************************/
-
-/********************************************************************/
-/********************************************************************/
-/********************************************************************/
-
-/*
- * If not building with SSR mode, you can
- * directly export the Router instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Router instance.
- */
-
+// Configuración del Router
 export default defineRouter(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
@@ -128,9 +47,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     scrollBehavior: () => ({ left: 0, top: 0 }),
     routes,
 
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
+    // Configuración de historial según el modo
     history: createHistory(process.env.VUE_ROUTER_BASE),
   })
 
