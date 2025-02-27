@@ -7,7 +7,7 @@ import {
 } from 'vue-router'
 import routes from './routes'
 
-/* AGREGADO: Registro del Service Worker utilizando la librería `register-service-worker` */
+/*AGREGADO*/
 import { register } from 'register-service-worker'
 
 if (process.env.PROD) {
@@ -35,7 +35,18 @@ if (process.env.PROD) {
     },
   })
 }
-// Configuración del Router
+/********************************************************************/
+/********************************************************************/
+
+/*
+ * If not building with SSR mode, you can
+ * directly export the Router instantiation;
+ *
+ * The function below can be async too; either use
+ * async/await or return a Promise which resolves
+ * with the Router instance.
+ */
+
 export default defineRouter(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
@@ -47,7 +58,9 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     scrollBehavior: () => ({ left: 0, top: 0 }),
     routes,
 
-    // Configuración de historial según el modo
+    // Leave this as is and make changes in quasar.conf.js instead!
+    // quasar.conf.js -> build -> vueRouterMode
+    // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   })
 

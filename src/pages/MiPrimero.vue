@@ -5,13 +5,13 @@
         <q-toolbar>
           <q-toolbar-title>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
             </q-avatar>
             Mi Datos en QR
           </q-toolbar-title>
         </q-toolbar>
       </q-header>
-        <!------------------------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------------->
       <div>
         <!-- Tabla de Quasar con eventos -->
         <q-table
@@ -35,11 +35,7 @@
 
             <!-- Botón para generar QR -->
             <q-card-section>
-              <q-btn
-                label="Generar QR"
-                color="primary"
-                @click="generateQR"
-              />
+              <q-btn label="Generar QR" color="primary" @click="generateQR" />
             </q-card-section>
 
             <!-- Mostrar el código QR generado -->
@@ -51,11 +47,7 @@
 
             <!-- Botón para descargar el QR -->
             <q-card-section v-if="qrCodeVisible">
-              <q-btn
-                label="Descargar QR"
-                color="secondary"
-                @click="downloadQR"
-              />
+              <q-btn label="Descargar QR" color="secondary" @click="downloadQR" />
             </q-card-section>
 
             <q-card-actions align="right">
@@ -69,27 +61,27 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import QrcodeVue from 'qrcode.vue';
-import html2canvas from 'html2canvas';
+import { ref } from 'vue'
+import QrcodeVue from 'qrcode.vue'
+import html2canvas from 'html2canvas'
 
 export default {
-  name: "PrimerComponente", // Nombre válido para ESLint
+  name: 'PrimerComponente', // Nombre válido para ESLint
   components: {
     QrcodeVue, // Registrar el componente QR
   },
   setup() {
-    const dialogVisible = ref(false);
-    const cellInfo = ref('');
-    const qrCodeVisible = ref(false);
-    const qrValue = ref('');
-    const qrCodeElement = ref(null);
+    const dialogVisible = ref(false)
+    const cellInfo = ref('')
+    const qrCodeVisible = ref(false)
+    const qrValue = ref('')
+    const qrCodeElement = ref(null)
 
     const columns = [
       { name: 'name', label: 'Nombre', field: 'name', align: 'left' },
       { name: 'age', label: 'Edad', field: 'age', align: 'left' },
       { name: 'address', label: 'Dirección', field: 'address', align: 'left' },
-    ];
+    ]
 
     const rows = [
       { name: 'Juan', age: 19, address: 'La Joya 123' },
@@ -102,27 +94,27 @@ export default {
       { name: 'Anahi', age: 30, address: 'Pedregal 456' },
       { name: 'Lazaro', age: 35, address: 'Peña 789' },
       { name: 'Noe', age: 19, address: 'Hoya 0101' },
-    ];
+    ]
 
     const onRowClick = (evt, row) => {
-      cellInfo.value = `Nombre: ${row.name}, Edad: ${row.age}, Dirección: ${row.address}`;
-      qrCodeVisible.value = false;
-      dialogVisible.value = true;
-    };
+      cellInfo.value = `Nombre: ${row.name}, Edad: ${row.age}, Dirección: ${row.address}`
+      qrCodeVisible.value = false
+      dialogVisible.value = true
+    }
 
     const generateQR = () => {
-      qrValue.value = cellInfo.value;
-      qrCodeVisible.value = true;
-    };
+      qrValue.value = cellInfo.value
+      qrCodeVisible.value = true
+    }
 
     const downloadQR = () => {
-      html2canvas(qrCodeElement.value).then(canvas => {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'qr-code.png';
-        link.click();
-      });
-    };
+      html2canvas(qrCodeElement.value).then((canvas) => {
+        const link = document.createElement('a')
+        link.href = canvas.toDataURL('image/png')
+        link.download = 'qr-code.png'
+        link.click()
+      })
+    }
 
     return {
       columns,
@@ -135,7 +127,7 @@ export default {
       onRowClick,
       generateQR,
       downloadQR,
-    };
+    }
   },
-};
+}
 </script>

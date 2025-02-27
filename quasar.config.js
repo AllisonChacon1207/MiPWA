@@ -33,7 +33,6 @@ export default defineConfig((/* ctx */) => {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
       target: {
-        vueRouterMode: 'history', // o 'hash' según lo que estés utilizando
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
       },
@@ -148,6 +147,7 @@ export default defineConfig((/* ctx */) => {
       // extendGenerateSWOptions (cfg) {},
       // extendInjectManifestOptions (cfg) {}
     },
+
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-cordova-apps/configuring-cordova
     cordova: {
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
