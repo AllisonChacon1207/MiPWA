@@ -41,6 +41,10 @@ export default defineConfig((/* ctx */) => {
         node: 'node20'
       },
 
+      "env": {
+      "NODE_ENV": "production"
+    },
+
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
