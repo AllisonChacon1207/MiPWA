@@ -1,1 +1,0 @@
-import{a}from"./index-C88pvD_q.js";const r=a.create({baseURL:"https://openlibrary.org/"}),i=({app:o})=>{o.config.globalProperties.$axios=a,o.config.globalProperties.$api=r};export{r as api,i as default};
