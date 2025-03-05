@@ -60,7 +60,7 @@
           <q-avatar size="56px" class="q-mb-sm">
             <img src="https://avatars.githubusercontent.com/u/62119402?s=400&v=4">
           </q-avatar>
-          <div class="text-weight-bold">Fabiola Flores</div>
+          <div class="text-weight-bold">Fabiola Chacón Flores</div>
           <div>Registro Vehicular</div>
         </div>
       </q-img>
