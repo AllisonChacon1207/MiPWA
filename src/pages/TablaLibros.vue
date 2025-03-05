@@ -39,7 +39,7 @@ export default {
       }
     };
 
-
+    
     onMounted(fetchBooks);
 
     return { books, columns };
