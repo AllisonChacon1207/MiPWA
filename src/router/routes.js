@@ -8,6 +8,8 @@ const routes = [
       { path: '/MiPWA/src/pages/MiLector.vue', component: () => import('src/pages/MiLector.vue') }, // Ruta para MiSegundo.vue
       { path: '/MiPWA/src/pages/TablaLibros.vue', component: () => import('src/pages/TablaLibros.vue') }, // Ruta para TablaLibros.vue
 
+      { path: '/MiPWA/src/pages/prueba1.vue', component: () => import('src/pages/prueba1.vue') }, // Ruta para TablaLibros.vue
+
     ],
   },
 
